@@ -3,9 +3,9 @@ class MoviesController < ApplicationController
 
   # GET /movies or /movies.json
   def index
-    @movies = if params[:sort] 
+    @movies = if params[:sort]
       Movie.order(params[:sort])
-    else 
+    else
       Movie.all
     end
   end
