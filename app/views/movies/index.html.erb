@@ -1,16 +1,27 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Movies" %>
 
-<h1>Movies</h1>
+<p style="color: green"><%= notice %></p>
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
+<div class="container">
+    <h1>Movies</h1>
+
     <p>
-      <%= link_to "Show this movie", movie %>
+        Sort by:
+        <%= link_to "Title", movies_path(sort: "title"), class: ("active-sort" if params[:sort] == "title") %> |
+        <%= link_to "Release date", movies_path(sort: "release_date"), class: ("active-sort" if params[:sort] == "release_date") %>
     </p>
-  <% end %>
+
+    <!-- Movie list view --->
+    <div id="movies" class="movie-list">
+        <% @movies.each do |movie| %>
+        <div class="movie-card">
+            <h2><%= movie.title %></h2>
+            <p><strong>Released:</strong> <%= movie.release_date %></p>
+            <%= link_to "Show this movie", movie, class: "btn" %>
+        </div>
+        <% end %>
+    </div>
 </div>
 
+<!-- Link to create a new movie -->
 <%= link_to "New movie", new_movie_path %>
