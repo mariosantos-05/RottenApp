@@ -4,13 +4,22 @@
 
 <h1>Movies</h1>
 
+<!-- Sorting links with highlighting -->
+<p>
+    Sort by:
+    <%= link_to "Title", movies_path(sort: "title"), style: ("font-weight: bold; color: blue;" if params[:sort] == "title") %> |
+    <%= link_to "Release date", movies_path(sort: "release_date"), style: ("font-weight: bold; color: blue;" if params[:sort] == "release_date") %>
+</p>
+
+<!-- Movie list -->
 <div id="movies">
-  <% @movies.each do |movie| %>
+    <% @movies.each do |movie| %>
     <%= render movie %>
     <p>
-      <%= link_to "Show this movie", movie %>
+        <%= link_to "Show this movie", movie %>
     </p>
-  <% end %>
+    <% end %>
 </div>
 
+<!-- Link to create a new movie -->
 <%= link_to "New movie", new_movie_path %>
