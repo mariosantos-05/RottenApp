@@ -57,7 +57,12 @@ group :development do
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # System testing
   gem "capybara"
   gem "selenium-webdriver"
+
+  # Cucumber + RSpec integration
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner-active_record'
+  gem 'rspec-rails'
 end
